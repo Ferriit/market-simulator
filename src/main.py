@@ -37,7 +37,7 @@ def generateAgents():
 
     for _ in range(AGENTAMOUNT):
         if random.randint(0, 1) == 1:
-            s.addIndividual(pos(random.randint(0, BOUNDS[0]), random.randint(0, BOUNDS[1])))
+            s.addAgent(pos(random.randint(0, BOUNDS[0]), random.randint(0, BOUNDS[1])), random.uniform(0, 0.75))
         else:
             r, theta = abs(random.gauss(0, 7)), random.uniform(0, 2 * math.pi)
 
@@ -47,7 +47,7 @@ def generateAgents():
             position.x += populationcenters[city].x
             position.y += populationcenters[city].y
 
-            s.addIndividual(position)
+            s.addAgent(position, random.uniform(0, 1))
 
 generateAgents()
 
@@ -58,7 +58,7 @@ while run:
             run = False
     
     ctx.fill((0, 0, 0));
-    for i in s.individuals:
+    for i in s.agents:
         pg.draw.aacircle(ctx, (255, 255, 255), (i.x * WR, i.y * HR), 2)
 
     pg.display.flip()

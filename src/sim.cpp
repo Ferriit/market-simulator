@@ -12,14 +12,14 @@ struct pos {
 
 class sim {
     public:
-        std::vector<pos> individuals;
+        std::vector<pos> agents;
+        std::vector<float> educationlevels;
+        std::vector<int> agentmoney;
 
-        void addIndividual(pos position) {
-            individuals.push_back(position);
-        }
-
-        std::vector<pos> fetchIndividuals() {
-            return individuals;
+        void addAgent(pos position, float educationlevel) {
+            agents.push_back(position);
+            educationlevels.push_back(educationlevel);
+            agentmoney.push_back(1000);
         }
 };
 
@@ -38,7 +38,8 @@ PYBIND11_MODULE(sim, m) {
 
     py::class_<sim>(m, "sim")
         .def(py::init<>())
-        .def_readwrite("individuals", &sim::individuals)
-        .def("addIndividual", &sim::addIndividual)
-        .def("fetchIndividuals", &sim::fetchIndividuals);
+        .def_readwrite("agents", &sim::agents)
+        .def_readwrite("agentMoney", &sim::agentmoney)
+        .def_readwrite("agentEducations", &sim::educationlevels)
+        .def("addAgent", &sim::addAgent);
 }
