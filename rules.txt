@@ -17,4 +17,16 @@ I want to simulate a market. Is this a good overview?
 
 - There's a 0% tax for now
 
-Should competition, differentiation and potentially monopoly emerge naturally?
+
+e_d = average education level at a company
+q = quality of the product
+p = price of the product
+c = cost to produce the product
+w = work cost
+m = profit margin in percent
+
+a = sqrt(10) / 2.5
+w = max(0.1, a * (0.25 + sqrt(e_d)))
+c = 1000 * q / w
+
+p = (1 + m)c
