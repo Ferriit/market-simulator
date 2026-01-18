@@ -56,10 +56,16 @@ while run:
         if event.type == pg.QUIT:
             pg.quit()
             run = False
-    
+
+    maxMoney = max(s.agentMoney)
+
     ctx.fill((0, 0, 0));
-    for i in s.agents:
-        pg.draw.aacircle(ctx, (255, 255, 255), (i.x * WR, i.y * HR), 2)
+    for i, e, m in zip(s.agents, s.agentEducations, s.agentMoney):
+        red   = int(max(0, min(e * 255, 255)))
+        green = int(max(0, min(m / maxMoney * 255, 255)))
+        blue  = 255
+
+        pg.draw.aacircle(ctx, (red, green, blue), (i.x * WR, i.y * HR), 2)
 
     pg.display.flip()
 

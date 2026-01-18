@@ -1,0 +1,20 @@
+I want to simulate a market. Is this a good overview?
+
+- Individuals have a position they're at and money
+- Individuals want to optimize quality or price of what they buy depending on how much money they have
+- Individuals "work" at companies to earn money
+- Individuals have an education level between 0 and 1 where companies that produce products of higher quality need more educated workers
+- More educated individuals have a higher wage than less educated individuals
+- Some individuals will "spawn" near population centers
+- Individuals will prioritize buying from local companies and then look more globally (even if a global company might fit them somewhat, they will prioritize buying from a local one even if it's a slightly worse fit)
+
+- Companies can have an influence level between 0 and 1 where 1 can interact with every individual on the map while 0 only can interact with individuals that are 1 space away from them.
+- The influence level is dependent on "revenue" compared to the average inside their own reach
+- Companies can trade with each other and their product has a single value for quality and price
+- Companies want to optimize economic growth, a high-quality product costs more to produce for them
+- If a company has a higher education level among workers on average, they can produce higher quality products for a low price
+- Quality and price are dynamic
+
+- There's a 0% tax for now
+
+Should competition, differentiation and potentially monopoly emerge naturally?

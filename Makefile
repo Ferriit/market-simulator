@@ -13,3 +13,6 @@ sim:
 install:
 	[ -d $(VENV) ] || $(PYTHON) -m venv $(VENV)
 	$(VENV)/bin/pip install --upgrade pip pybind11
+
+run: sim
+	python3 src/main.py

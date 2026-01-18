@@ -1,6 +1,8 @@
 #include <vector>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <algorithm>
+#include <cmath>
 
 namespace py = pybind11;
 
@@ -10,16 +12,21 @@ struct pos {
     pos(float x_, float y_) : x(x_), y(y_) {}
 };
 
+
 class sim {
     public:
         std::vector<pos> agents;
-        std::vector<float> educationlevels;
+        std::vector<float> agenteducation;
         std::vector<int> agentmoney;
+
+        std::vector<pos> companies;
+        std::vector<int> companyqualities;
+        std::vector<std::vector<int>> companyworkers;
 
         void addAgent(pos position, float educationlevel) {
             agents.push_back(position);
-            educationlevels.push_back(educationlevel);
-            agentmoney.push_back(1000);
+            agenteducation.push_back(educationlevel);
+            agentmoney.push_back(std::max(1000, (int)(2000 * educationlevel)));
         }
 };
 
@@ -40,6 +47,6 @@ PYBIND11_MODULE(sim, m) {
         .def(py::init<>())
         .def_readwrite("agents", &sim::agents)
         .def_readwrite("agentMoney", &sim::agentmoney)
-        .def_readwrite("agentEducations", &sim::educationlevels)
+        .def_readwrite("agentEducations", &sim::agenteducation)
         .def("addAgent", &sim::addAgent);
 }
